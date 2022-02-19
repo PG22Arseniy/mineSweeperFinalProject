@@ -1,0 +1,92 @@
+<!-- Copywrite Arseniy Skudaev 2022 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mine Sweeper</title>
+    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet" type="text/css" href="Widgets/ReportWidget/styles/scrollLayout.css"/> 
+    <link rel="shortcut icon" href="http://www.example.com/myicon.ico"/>
+
+  </head> 
+  <body>
+    <script  src="script.js"></script>     
+    <div class="bg"></div>
+    <div class="bg bg2"></div> 
+    <div class="bg bg3"></div> 
+    <header>
+        <h1> Mind Sweeper </h1> 
+        <div class="options"> 
+            <a href="#how-to-play" > How to play </a> 
+            <a href="#settings"> Game settings </a> 
+        </div> 
+    </header> 
+    <div class="page-content">
+        <div class="game"> 
+            <div class="game-header">  
+                <!-- number of mines left -->
+                <div> <p class="side-number" id = "mineCount">00</p> </div>  
+
+                <div> <button class="main-btn-img" id="main-img" onclick="Reset()"> </div>  
+                </button>   
+
+                <!-- timer -->
+                <div> <p class="side-number" id = "timer">00 : 00 : 00</p>  </div>      
+            </div> 
+ 
+            <!-- all squares. Better collapse  this div!. -->    
+            <div class="field-grid" id="gameField">  </div>    
+        </div> 
+        <div class="bottom-box" id = "how-to-play">
+            <h2>How to play</h2>
+            <p>
+                Every new game starts  with a grid of unopened squares. <br/>
+                The goal is to open all squares on the field that are not mines. <br/>
+                If you open a mine - you lose. <br/>
+                A non mine square displays a number. <br/>
+                It refers to the number of mines that are currently touching the square.<br/>
+                <br/>
+                TO OPEN A SQUARE USE <span> LEFT MOUSE CLICK </span> <br/>  
+                TO MARK A SQUARE WITH A MINE USE <span> RGHT MOUSE CLICK </span> 
+            </p>
+            
+        </div>
+        <div class="bottom-box" id = "settings">  
+            <h2>Game settings</h2>
+            <div class="table-button">  
+            <table>
+                <tr>
+                    <th>Difficulty</th> 
+                    <th>Rows</th>
+                    <th>Columns</th>
+                    <th>Mines</th>
+                </tr>
+                
+                <tr>
+                    <td class="first-td">  <label><input type="radio" id = "beg" value="value1" name="radio">  Beginner </label> </td> 
+                    <td>9</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td class="first-td"> <label><input type="radio" id = "med" value="value2" name="radio">  Medium </label> </td> 
+                    <td>16</td>
+                    <td>16</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td class="first-td"> <label><input type="radio" id="exp" value="value3" name="radio" checked="true">  Expert </label> </td>   
+                    <td>30</td>
+                    <td>16</td>
+                    <td>99</td>  
+                </tr>  
+              </table>  
+              <button class="settings-button" id = "applySettings" onclick="Reset()"> Apply </button>
+            </div> 
+        </div> 
+    </div>  
+    <script  src="timer.js"></script>   
+  </body>
+</html> 
