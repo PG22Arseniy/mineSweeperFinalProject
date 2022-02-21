@@ -3,17 +3,8 @@ window.addEventListener('load', (event) => {
 });    
 var mines = [];  // array of mines
 var mineCountSquares = [] // array of mine count of all squares
-function SquareClick(obj){   
-    
-    var size = 0 // number of squares 
-    var mineNum = 0 // number of mines
-    var cols = 0 // number of columns
-      
-    //Getting settings:
-    if (document.getElementById("beg").checked) {size = 81; mineNum = 10; cols = 9; }
-    else if (document.getElementById("med").checked) {size = 256; mineNum = 40; cols = 16; }  
-    else if (document.getElementById("exp").checked) {size = 480; mineNum = 99; cols = 30; } 
-    
+function SquareClick(obj, cols, mineNum){     
+
     if (!document.querySelectorAll(".field-grid")[0].classList.contains('active')) {    // checking if the field is active
         
         document.querySelectorAll(".field-grid")[0].classList.add("active") // activate field if it's not
@@ -239,21 +230,25 @@ function ApplyGameSettings ()
 {
     let size = 0
     let mineNum = 0
+    let cols = 0
     if (document.getElementById("beg").checked) {
         mineNum = 10;
         size = 81; 
+        cols = 9
         document.getElementById("gameField").style.gridTemplateColumns ="auto auto auto auto auto auto auto auto auto";  
         document.getElementById("gameField").style.maxWidth = "360px";
     }
     else if (document.getElementById("med").checked) {
         mineNum = 40
         size = 256;
+        cols = 16
         document.getElementById("gameField").style.gridTemplateColumns ="auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto "; 
         document.getElementById("gameField").style.maxWidth = "620px";
     }  
     else if (document.getElementById("exp").checked) {
         mineNum = 99
         size = 480; 
+        cols = 30
         document.getElementById("gameField").style.gridTemplateColumns ="auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto"; 
         document.getElementById("gameField").style.maxWidth = "1800px";  
     } 
@@ -262,7 +257,7 @@ function ApplyGameSettings ()
         var iDiv = document.createElement('div');
         iDiv.classList.add ('hide');  
         iDiv.onclick = function() {  
-            SquareClick(this);
+            SquareClick(this, cols, mineNum); 
           }
         iDiv.oncontextmenu = function() { 
             GetFlagged(this); 
